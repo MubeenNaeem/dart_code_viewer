@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'dart_code_viewer_theme.dart';
 import 'pre_highlighter.dart';
@@ -73,175 +72,6 @@ class DartCodeViewer extends StatelessWidget {
     this.height,
     this.width,
   }) : super(key: key);
-
-  /// Create a DartCodeViewer based of one [TextStyle]. Optional [Color] parameters
-  /// which change the TextStyle color for that highlighter type.
-  ///
-  /// The default [TextStyle] is [RobotoMono].
-  ///
-  /// Useful parameter when you want to use one [TextStyle].
-  factory DartCodeViewer.textColor(
-    String data, {
-    TextStyle? textStyle,
-    Color? baseColor,
-    Color? classColor,
-    Color? commentColor,
-    Color? constantColor,
-    Color? keywordColor,
-    Color? numberColor,
-    Color? punctuationColor,
-    Color? stringColor,
-    Color? backgroundColor,
-    Text? copyButtonText,
-    bool? showCopyButton,
-    double? height,
-    double? width,
-  }) {
-    return DartCodeViewer(
-      data,
-      baseStyle: textStyle?.copyWith(color: baseColor),
-      classStyle: textStyle?.copyWith(color: classColor),
-      commentStyle: textStyle?.copyWith(color: commentColor),
-      constantStyle: textStyle?.copyWith(color: constantColor),
-      keywordStyle: textStyle?.copyWith(color: keywordColor),
-      numberStyle: textStyle?.copyWith(color: numberColor),
-      punctuationStyle: textStyle?.copyWith(color: punctuationColor),
-      stringStyle: textStyle?.copyWith(color: stringColor),
-      backgroundColor: backgroundColor,
-      copyButtonText: copyButtonText,
-      showCopyButton: showCopyButton,
-      height: height,
-      width: width,
-    );
-  }
-
-  /// Common code viewer highlighter for [ThemeMode.light].
-  factory DartCodeViewer.light(String data) {
-    return DartCodeViewer.textColor(
-      data,
-      baseColor: Colors.blueGrey.shade800,
-      classColor: Colors.purple.shade500,
-      commentColor: Colors.pink.shade600,
-      constantColor: Colors.indigo.shade500,
-      keywordColor: Colors.indigo.shade500,
-      numberColor: Colors.red.shade700,
-      punctuationColor: Colors.blueGrey.shade800,
-      stringColor: Colors.green.shade700,
-      backgroundColor: Colors.grey.shade100,
-    );
-  }
-
-  /// Code viewer light alternative for [ThemeMode.light].
-  factory DartCodeViewer.lightAlt(String data) {
-    return DartCodeViewer.textColor(
-      data,
-      baseColor: Colors.black,
-      classColor: const Color(0xFF673AB7),
-      commentColor: const Color(0xFF999999),
-      constantColor: const Color(0xFFE67C73),
-      keywordColor: const Color(0xFF4285F4),
-      numberColor: const Color(0xFFDB4437),
-      punctuationColor: const Color(0xFFA3A3A3),
-      stringColor: const Color(0xFF0F9D58),
-      backgroundColor: const Color(0xFFEEEEEE),
-    );
-  }
-
-  /// Common code viewer highlighter for [ThemeMode.dark].
-  factory DartCodeViewer.dark(String data) {
-    return DartCodeViewer.textColor(
-      data,
-      baseColor: Colors.blueGrey.shade50,
-      classColor: Colors.purple.shade200,
-      commentColor: Colors.pink.shade300,
-      constantColor: Colors.yellow.shade700,
-      keywordColor: Colors.cyan.shade300,
-      numberColor: Colors.yellow.shade700,
-      punctuationColor: Colors.blueGrey.shade50,
-      stringColor: Colors.lightGreen.shade400,
-      backgroundColor: Colors.grey.shade900,
-    );
-  }
-
-  /// Code viewer dark alternative for [ThemeMode.dark].
-  factory DartCodeViewer.darkAlt(String data) {
-    return DartCodeViewer.textColor(
-      data,
-      baseColor: Colors.white,
-      classColor: const Color(0xFFFF8A65),
-      commentColor: const Color(0xFFAAAAAA),
-      constantColor: const Color(0xFFE67C73),
-      keywordColor: const Color(0xFF7BAAF7),
-      numberColor: const Color(0xFFF4B400),
-      punctuationColor: const Color(0xFFA3A3A3),
-      stringColor: const Color(0xFF57BB8A),
-      backgroundColor: const Color(0xFF000000),
-    );
-  }
-
-  /// Code viewer highlighter with a great dark design for [ThemeMode.dark].
-  factory DartCodeViewer.designDark(String data) {
-    return DartCodeViewer.textColor(
-      data,
-      baseColor: Colors.white,
-      classColor: const Color(0xFFFF8A80),
-      commentColor: const Color(0xFF607D8B),
-      constantColor: const Color(0xFF90A4AE),
-      keywordColor: const Color(0xFF26C6DA),
-      numberColor: const Color(0xFFFFBC00),
-      punctuationColor: const Color(0xFF90A4AE),
-      stringColor: const Color(0xFF00BFA4),
-      backgroundColor: const Color(0xFF263238),
-    );
-  }
-
-  /// Code viewer highlighter for Google IO 2017.
-  factory DartCodeViewer.io17(String data) {
-    return DartCodeViewer.textColor(
-      data,
-      baseColor: Colors.white,
-      classColor: const Color(0xFFFF8857),
-      commentColor: const Color(0xFFFF5CB4),
-      constantColor: const Color(0xFF90A4AE),
-      keywordColor: const Color(0xFF00E4FF),
-      numberColor: const Color(0xFFFFD500),
-      punctuationColor: const Color(0xFF90A4AE),
-      stringColor: const Color(0xFF1CE8b5),
-      backgroundColor: const Color(0xFF263238),
-    );
-  }
-
-  /// Code viewer highlighter for Google IO 2019.
-  factory DartCodeViewer.io19(String data) {
-    return DartCodeViewer.textColor(
-      data,
-      baseColor: Colors.white,
-      classColor: const Color(0xFFEE675C),
-      commentColor: const Color(0xFF9AA0A6),
-      constantColor: const Color(0xFFFCC934),
-      keywordColor: const Color(0xFF669DF6),
-      numberColor: const Color(0xFFFCC934),
-      punctuationColor: const Color(0xFF9AA0A6),
-      stringColor: const Color(0xFF5BB974),
-      backgroundColor: const Color(0xFF202124),
-    );
-  }
-
-  /// Code viewer highlighter for Flutter Interact 2019.
-  factory DartCodeViewer.flutterInteract19(String data) {
-    return DartCodeViewer.textColor(
-      data,
-      baseColor: const Color(0xFFFAFBFB),
-      classColor: const Color(0xFFD65BAD),
-      commentColor: const Color(0xFF808080),
-      constantColor: const Color(0xFFFF8383),
-      keywordColor: const Color(0xFF1CDEC9),
-      numberColor: const Color(0xFFBD93F9),
-      punctuationColor: const Color(0xFF8BE9FD),
-      stringColor: const Color(0xFFffa65c),
-      backgroundColor: const Color(0xFF241e30),
-    );
-  }
 
   /// The string that is transformed into code. This is a required variable.
   final String data;
@@ -377,14 +207,8 @@ class DartCodeViewer extends StatelessWidget {
 
     return DartCodeViewerTheme(
       data: dartCodeViewerThemeData,
-      child: Container(
-        color: dartCodeViewerThemeData.backgroundColor,
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        height: dartCodeViewerThemeData.height,
-        width: dartCodeViewerThemeData.width,
-        child: _DartCodeViewerPage(
-          codifyString(data, dartCodeViewerThemeData),
-        ),
+      child: _DartCodeViewerPage(
+        codifyString(data, dartCodeViewerThemeData),
       ),
     );
   }
